@@ -1,58 +1,32 @@
 import DataTable from "react-data-table-component";
 import './App.css'
 
-export default function ToDoTable(){
-
-    const columns = [
-        { 
-            name: 'Done',
-            selector: row => row.done
-        },
-        {
-            name: 'Name',
-            selector: row => row.name
-        }, 
-        {
-            name: 'Priority',
-            selector: row => row.priority
-        }, 
-        {
-            name: 'Due Date',
-            selector: row => row.dueDate
-        }, 
-        {
-            name: 'Actions',
-            selector: row => row.actions
-        }
-    ]
-
-    const todos = [
-        {
-            id: 1, 
-            name: 'Clean de dishes',
-            dueDate: '2024-07-18',
-            done: false, 
-            doneDate: '',
-            priority: 'LOW', 
-            creationDate: '2024-07-17'
-        }, 
-        {
-            id: 2, 
-            name: 'Buy new shoes',
-            dueDate: '2024-08-10',
-            done: false, 
-            doneDate: '',
-            priority: 'LOW', 
-            creationDate: '2024-07-07'
-        }
-    ]
+const ToDoTable = ({ data }) => {
 
     return (
-        <DataTable 
-            className="Table"
-            columns={columns} 
-            data={todos}
-            fixedHeader/>
+        <table>
+            <thead>
+                <tr>
+                    <th>Done</th>
+                    <th>Name</th>
+                    <th>Priority</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {data.map((item) => (
+                    <tr key={item.id}>
+                    <td></td>
+                    <td>{item.text}</td>
+                    <td>{item.priority}</td>
+                    <td>{item.dueDate}</td>
+                    </tr>
+                ))}
+            </tbody>
+      </table>
             
     );
-}
+};
+
+export default ToDoTable;
